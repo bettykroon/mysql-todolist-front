@@ -104,7 +104,6 @@ export function Home(){
         .then(data => {
             console.log(data);
         })
-
         window.location.reload();
     }
 
@@ -139,6 +138,18 @@ export function Home(){
         window.location.reload();
     }
 
+    function deleteList(name: string){
+        fetch("http://localhost:3000/users/delete/" + name, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+        localStorage.removeItem("list");
+        window.location.reload();
+    }
+
     return (<>
         <header>
             <h1>Listify</h1>
@@ -146,9 +157,9 @@ export function Home(){
 
         <div className="todos">
             <h2>My lists</h2>
-            {allLists}
+            <nav>{allLists}</nav>
 
-            <button onClick={() => setNewListBtn(true)}>+ New list</button>
+            <button className="newList" onClick={() => setNewListBtn(!newListBtn)}>+ New list</button>
             {listBtn && !newListBtn && <><form>
                 <input type="text" name="todo" placeholder={`add to ${list}`} onChange={handleChange}/>
                 <button type="button" onClick={() => save(list)}>Add</button>
@@ -156,7 +167,9 @@ export function Home(){
 
             <h2>{list}:</h2>
             <ul>{lis}</ul>
-            {emptyList}</>}
+            <p>{emptyList}</p>
+            <button className="newList" onClick={() => deleteList(list)}>Delete list</button>
+            </>}
 
             {newListBtn && <>
                 <form>

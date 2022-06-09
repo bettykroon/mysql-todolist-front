@@ -17,6 +17,24 @@ header {
     padding: 50px;
     border-radius: 15px;
 
+    nav {
+        border: 1px solid #46b189;
+        background-color: #46b189;
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-evenly;
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: #203855;
+            cursor: pointer;
+
+            &:hover { color: white}
+        }
+    }
+
     input[type=text] {
         width: 80%;
         padding: 12px 20px;
@@ -39,6 +57,21 @@ header {
 
         &:hover {
             background-color: #203855;
+        }
+    }
+
+    .newList {
+        background-color: #203855;
+        padding: 13px 20px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        margin-top: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #46b189;
+            color: #203855;
         }
     }
 
@@ -68,5 +101,10 @@ header {
                 }
             }
         }
+    }
+
+    p {
+        text-align: center;
+        margin-top: 20px;
     }
 }
