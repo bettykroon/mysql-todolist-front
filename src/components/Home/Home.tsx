@@ -114,7 +114,7 @@ export function Home(){
         </li>)
     })
 
-    let allLists = lists.map((list, i) => {
+    let dropDownMenu = lists.map((list, i) => {
         return (
             <button key={i} onClick={() => getList(list)}>{list}</button>
         )
@@ -150,14 +150,22 @@ export function Home(){
         window.location.reload();
     }
 
+    const [ displayLists, setDisplayLists ] = useState(false);
+    function showLists(){
+        console.log("HEJ");
+        setDisplayLists(!displayLists);
+    }
+
     return (<>
         <header>
             <h1>Listify</h1>
         </header>
 
         <div className="todos">
-            <h2>My lists</h2>
-            <nav>{allLists}</nav>
+            <div className="dropdown">
+                <h2 className="droplist" onClick={showLists}>My lists ▾</h2>
+                {displayLists && <div className="dropdownlists">{dropDownMenu}</div>}
+            </div>
 
             <button className="newList" onClick={() => setNewListBtn(!newListBtn)}>+ New list</button>
             {listBtn && !newListBtn && <><form>
@@ -168,7 +176,9 @@ export function Home(){
             <h2>{list}:</h2>
             <ul>{lis}</ul>
             <p>{emptyList}</p>
-            <button className="newList" onClick={() => deleteList(list)}>Delete list</button>
+            <div className="delete">
+                <button onClick={() => deleteList(list)}>Delete list</button>
+            </div>
             </>}
 
             {newListBtn && <>

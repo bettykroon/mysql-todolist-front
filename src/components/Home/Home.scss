@@ -107,4 +107,33 @@ header {
         text-align: center;
         margin-top: 20px;
     }
+
+    .dropdownlists {
+        text-align: center;
+
+        button {
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            margin: 2px;
+        }
+    }
+
+    .delete {
+        text-align: center;
+        button {
+            background-color: #203855;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            margin-top: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #46b189;
+                color: #203855;
+            }
+        }
+    }
 }
